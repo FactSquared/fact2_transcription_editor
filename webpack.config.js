@@ -35,25 +35,26 @@ const config = {
       ]
   },
   plugins: [
+    new webpack.EnvironmentPlugin({'SERVER_URL': 'http://localhost/api/json.php', 'ACCESS_KEY': ''}),
     //https://github.com/kevlened/copy-webpack-plugin
-        new CopyWebpackPlugin([
-            { from: 'src/index.html', to: 'index.html' },
-        ]),
-        //TODO: maybe compile the CSS to speed up load time?
-         new CopyWebpackPlugin([
-            { from: 'src/style.css', to: 'style.css' },
-            { from: 'src/toggle_switch.css', to: 'toggle_switch.css' }
-        ]),
-        new webpack.ProvidePlugin({
-           $: "jquery",
-           jQuery: "jquery",
-           jquery: 'jquery',
-           'window.jQuery': 'jquery',
-           _: "underscore",
-          Backbone: 'backbone',
-          Mousetrap: "mousetrap"
-       })
-    ]
+    new CopyWebpackPlugin([
+        { from: 'src/index.html', to: 'index.html' },
+    ]),
+    //TODO: maybe compile the CSS to speed up load time?
+    new CopyWebpackPlugin([
+        { from: 'src/style.css', to: 'style.css' },
+        { from: 'src/toggle_switch.css', to: 'toggle_switch.css' }
+    ]),
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        jquery: 'jquery',
+        'window.jQuery': 'jquery',
+        _: "underscore",
+      Backbone: 'backbone',
+      Mousetrap: "mousetrap"
+    })
+  ]
 };
 
 
